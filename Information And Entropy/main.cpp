@@ -18,13 +18,10 @@ int main()
 			break;
 
 		ifstream ifs;
-		try
+		ifs.open(input);
+		if (!ifs.is_open())
 		{
-			ifs.open(input);
-		}
-		catch (const exception & ex)
-		{
-			cout << ex.what() << endl;
+			cout << "File is inaccessible!" << endl;
 			continue;
 		}
 
@@ -41,7 +38,7 @@ int main()
 			H -= p * log2(p);
 			cout << "'" << ch << "': Count - " << cnt << ", p - " << p << endl;
 		}
-		cout << "Entropy of the alphabet: " << H << "." << endl;
+		cout << "Entropy of the alphabet: " << H << " bits." << endl;
 		cout << "Information content of the file content: "
 			<< H * length / 8 << " bytes." << endl;
 		cout << "------------------------------" << endl;

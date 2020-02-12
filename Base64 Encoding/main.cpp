@@ -26,13 +26,10 @@ int main()
 			break;
 
 		ifstream ifs;
-		try
+		ifs.open(input);
+		if (!ifs.is_open())
 		{
-			ifs.open(input, ios::binary);
-		}
-		catch (const exception& ex)
-		{
-			cout << ex.what() << endl;
+			cout << "File is inaccessible!" << endl;
 			continue;
 		}
 
@@ -40,13 +37,10 @@ int main()
 		getline(cin, savePath);
 
 		ofstream ofs;
-		try
+		ofs.open(savePath);
+		if (!ofs.is_open())
 		{
-			ofs.open(savePath);
-		}
-		catch (const exception & ex)
-		{
-			cout << ex.what() << endl;
+			cout << "Save location is inaccessible!" << endl;
 			continue;
 		}
 
