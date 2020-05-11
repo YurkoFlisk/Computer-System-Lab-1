@@ -26,7 +26,7 @@ int main()
 			break;
 
 		ifstream ifs;
-		ifs.open(input);
+		ifs.open(input, ios::binary);
 		if (!ifs.is_open())
 		{
 			cout << "File is inaccessible!" << endl;
@@ -46,7 +46,7 @@ int main()
 
 		int bitsFromPrev = 0;
 		char ch, prevCh;
-		for (; ifs.get(ch); prevCh = ch)
+		for (; ifs.read(&ch, 1); prevCh = ch)
 		{
 			switch (bitsFromPrev)
 			{
